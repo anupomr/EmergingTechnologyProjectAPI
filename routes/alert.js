@@ -11,21 +11,21 @@ router.get('/alerts', function(req, res, next){
     });
 });
 
-//Save client
+//Save alert
 router.post('/alert', function(req, res, next){
-    var client = req.body;
-    if(!client.clientcode){
+    var alert = req.body;
+    if(!alert.alertcode){
         res.status(400);
         res.json({
             "error": "Bad Data"
         });
     } else {
         
-        alertModel.create(client, function(err, client){
+        alertModel.create(alert, function(err, alert){
             if(err){
                 res.send(err);
             }
-            res.json(client);
+            res.json(alert);
         });
     }
 });

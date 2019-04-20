@@ -4,8 +4,10 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var client = require('./routes/client');
+var alert=require('./routes/alert');
+var ai=require('./routes/ai');
 
-var port = 3001;
+var port = 80;
 var app = express();
 
 
@@ -36,6 +38,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', index);
 app.use('/api', client);
+app.use('/api', alert);
+app.use('/api', ai);
 
 app.listen(port, function(){
     console.log('Server started on port '+port);
